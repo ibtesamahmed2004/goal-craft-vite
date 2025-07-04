@@ -1,0 +1,147 @@
+import React from 'react'
+import { FaSun, FaMoon, FaBell, FaUserCircle, FaCog } from 'react-icons/fa'
+
+const Navbar = ({ darkMode, toggleDarkMode, unreadNotifications }) => {
+  return (
+    <nav className={`sticky top-0 z-50 shadow-lg transition-colors duration-300 ${darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-blue-600 to-purple-700'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo/Brand */}
+          <div className="flex-shrink-0 flex items-center">
+            <div className={`flex items-center justify-center w-10 h-10 rounded-md ${darkMode ? 'bg-gray-700' : 'bg-white bg-opacity-20'} mr-3`}>
+              <span className={`text-xl font-bold ${darkMode ? 'text-blue-400' : 'text-white'}`}>✓</span>
+            </div>
+            <span className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-white'}`}>Goal Craft</span>
+          </div>
+
+          {/* Primary Nav */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              <a href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${darkMode ? 'bg-gray-900 text-white' : 'bg-black bg-opacity-20 text-white'}`}>
+                Dashboard
+              </a>
+              <a href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-blue-100 hover:bg-black hover:bg-opacity-20 hover:text-white'}`}>
+                My Goals
+              </a>
+              <a href="#" className={`px-3 py-2 rounded-md text-sm font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-blue-100 hover:bg-black hover:bg-opacity-20 hover:text-white'}`}>
+                Analytics
+              </a>
+            </div>
+          </div>
+
+          {/* Right Side */}
+          <div className="hidden md:block">
+            <div className="ml-4 flex items-center md:ml-6">
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className={`p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 ${darkMode ? 'focus:ring-gray-400 text-gray-300 hover:text-white' : 'focus:ring-white text-blue-200 hover:text-white'}`}
+              >
+                {darkMode ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
+              </button>
+
+              {/* Notifications */}
+              <button className={`ml-3 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 relative ${darkMode ? 'focus:ring-gray-400 text-gray-300 hover:text-white' : 'focus:ring-white text-blue-200 hover:text-white'}`}>
+                <FaBell className="h-5 w-5" />
+                {unreadNotifications > 0 && (
+                  <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                )}
+              </button>
+
+              {/* User Profile */}
+              <div className="ml-3 relative">
+                <div>
+                  <button className={`max-w-xs rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${darkMode ? 'focus:ring-gray-400' : 'focus:ring-white'}`}>
+                    <FaUserCircle className={`h-8 w-8 rounded-full ${darkMode ? 'text-gray-300' : 'text-blue-200'}`} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Settings */}
+              <button className={`ml-3 p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 ${darkMode ? 'focus:ring-gray-400 text-gray-300 hover:text-white' : 'focus:ring-white text-blue-200 hover:text-white'}`}>
+                <FaCog className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="-mr-2 flex md:hidden">
+            <button
+              className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none ${darkMode ? 'text-gray-400 hover:text-white hover:bg-gray-700' : 'text-blue-200 hover:text-white hover:bg-blue-800'}`}
+            >
+              <svg
+                className="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className="md:hidden">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#"
+            className={`block px-3 py-2 rounded-md text-base font-medium ${darkMode ? 'bg-gray-900 text-white' : 'bg-black bg-opacity-20 text-white'}`}
+          >
+            Dashboard
+          </a>
+          <a
+            href="#"
+            className={`block px-3 py-2 rounded-md text-base font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-blue-100 hover:bg-black hover:bg-opacity-20 hover:text-white'}`}
+          >
+            My Goals
+          </a>
+          <a
+            href="#"
+            className={`block px-3 py-2 rounded-md text-base font-medium ${darkMode ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-blue-100 hover:bg-black hover:bg-opacity-20 hover:text-white'}`}
+          >
+            Analytics
+          </a>
+          <div className="pt-4 pb-3 border-t border-gray-700">
+            <div className="flex items-center px-5">
+              <div className="flex-shrink-0">
+                <FaUserCircle className="h-10 w-10 rounded-full text-gray-300" />
+              </div>
+              <div className="ml-3">
+                <div className="text-base font-medium text-white">User Settings</div>
+              </div>
+              <button className="ml-auto flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <FaBell className="h-6 w-6" />
+              </button>
+            </div>
+            <div className="mt-3 px-2 space-y-1">
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+              >
+                Your Profile
+              </a>
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+              >
+                Settings
+              </a>
+              <a
+                href="#"
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+              >
+                Sign out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  )
+}
+
+export default Navbar
